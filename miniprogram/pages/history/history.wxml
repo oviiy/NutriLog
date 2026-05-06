@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="section-title">History Clouds</view>
+  
+  <view wx:if="{{days.length}}">
+    <view wx:for="{{days}}" wx:key="date" class="day card">
+      <view class="day-head">
+        <text class="day-date">{{item.date}}</text>
+        <text class="day-kcal">{{item.totals.calories}} kcal</text>
+      </view>
+      <view class="day-macros muted">
+        P {{item.totals.protein}}g · C {{item.totals.carbs}}g · F {{item.totals.fat}}g
+      </view>
+      <view class="day-entries muted">
+        {{item.entryCount}} meals logged ✨
+      </view>
+    </view>
+  </view>
+  <view wx:else class="empty-state card">
+    <text class="empty-icon">🎈</text>
+    <text class="empty-text">No history yet! Your sky is waiting for some logs.</text>
+  </view>
+</view>

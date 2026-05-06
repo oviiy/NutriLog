@@ -1,0 +1,49 @@
+/* Global styles - NutriCloud (Cloud-Morphism / Fluffy) */
+page {
+  background: linear-gradient(180deg, #E0F2FE 0%, #FFFFFF 100%);
+  color: #1E3A8A; /* Gentle Deep Blue */
+  font-family: "PingFang SC", "Segoe UI", "Rounded MT Bold", "Varela Round", sans-serif;
+  font-size: 30rpx;
+  line-height: 1.6;
+}
+
+.container {
+  padding: 40rpx 32rpx;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+/* Marshmallow Card Style */
+.card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 64rpx; /* Super rounded / Pill feel */
+  padding: 48rpx;
+  margin-bottom: 32rpx;
+  border: 4rpx solid #FFFFFF;
+  box-shadow: 0 16rpx 48rpx rgba(125, 211, 252, 0.2); /* Soft blue shadow */
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #0EA5E9; /* Sky Blue */
+  margin-bottom: 24rpx;
+  margin-left: 12rpx;
+}
+
+.muted {
+  color: #7DD3FC;
+  font-size: 26rpx;
+}
+
+/* Rounded Primary Button */
+.btn-primary {
+  background: linear-gradient(135deg, #7DD3FC 0%, #38BDF8 100%);
+  color: #fff;
+  border-radius: 100rpx;
+  padding: 28rpx;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 12rpx 24rpx rgba(56, 189, 248, 0.3);
+}

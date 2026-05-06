@@ -1,0 +1,359 @@
+.summary {
+  background: #FFFFFF;
+  border-radius: 80rpx 80rpx 20rpx 80rpx; /* Cloud-like asymmetrical shape */
+  border: 2rpx solid #7DD3FC;
+  padding: 64rpx 48rpx;
+  position: relative;
+  box-shadow: 0 20rpx 60rpx rgba(125, 211, 252, 0.3);
+}
+
+/* Little cloud puff decorations */
+.summary::before {
+  content: "☁️";
+  position: absolute;
+  top: -30rpx;
+  left: 40rpx;
+  font-size: 40rpx;
+  opacity: 0.8;
+}
+
+.summary-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.lang-toggle {
+  font-size: 24rpx;
+  color: #7DD3FC;
+  border: 2rpx solid #E0F2FE;
+  padding: 6rpx 20rpx;
+  border-radius: 100rpx;
+  background: rgba(255,255,255,0.1);
+}
+
+.summary-date-box {
+  display: flex;
+  align-items: center;
+}
+.summary-date-text {
+  font-size: 26rpx;
+  color: #94A3B8;
+  font-weight: 600;
+}
+
+.summary-label {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #0369A1;
+  background: #E0F2FE;
+  padding: 12rpx 32rpx;
+  border-radius: 100rpx;
+}
+
+.kcal {
+  margin-bottom: 48rpx;
+}
+
+.kcal-main {
+  display: flex;
+  align-items: baseline;
+}
+
+.kcal-num {
+  font-size: 110rpx;
+  font-weight: 500;
+  color: #0284C7;
+  letter-spacing: -2rpx;
+}
+
+.kcal-unit {
+  font-size: 32rpx;
+  margin-left: 12rpx;
+  color: #7DD3FC;
+}
+
+.kcal-diff {
+  font-size: 26rpx;
+  margin-top: 12rpx;
+  color: #38BDF8;
+}
+
+.macros {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 40rpx;
+  border-top: 2rpx dashed #E0F2FE;
+}
+
+.macro-lbl {
+  font-size: 22rpx;
+  color: #94A3B8;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.macro-num {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #0EA5E9;
+}
+.macro-num.cap-over {
+  color: #EF4444; /* Alert red for exceeding macro caps */
+}
+
+/* Chubby Action Buttons */
+.actions {
+  display: flex;
+  gap: 32rpx;
+  margin: 48rpx 0;
+}
+
+.action-btn {
+  flex: 1;
+  background: #FFFFFF;
+  border-radius: 64rpx;
+  padding: 56rpx 32rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 4rpx solid #F0F9FF;
+  box-shadow: 0 16rpx 40rpx rgba(0,0,0,0.04);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.action-btn:active {
+  transform: scale(0.92);
+  background: #F0F9FF;
+}
+
+.action-btn .icon {
+  font-size: 72rpx;
+  margin-bottom: 16rpx;
+}
+
+.action-title {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #0369A1;
+}
+
+.action-sub {
+  font-size: 22rpx;
+  color: #94A3B8;
+  margin-top: 4rpx;
+}
+
+/* Fluffy Logs */
+.entry {
+  padding: 40rpx;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.entry-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+  border-bottom: 2rpx dashed #F0F9FF;
+  padding-bottom: 16rpx;
+}
+
+.entry-time {
+  color: #7DD3FC;
+  font-size: 24rpx;
+}
+
+.entry-kcal {
+  color: #38BDF8;
+  font-weight: 600;
+}
+
+.food-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx 0;
+}
+
+.food-name {
+  color: #475569;
+}
+
+.food-kcal {
+  color: #94A3B8;
+}
+
+/* Soft Bar Chart */
+.chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 280rpx; /* Taller chart */
+  padding: 60rpx 0 20rpx;
+}
+
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.bar-val {
+  font-size: 18rpx;
+  color: #38BDF8;
+  margin-bottom: 8rpx;
+  font-weight: 600;
+}
+
+.bar {
+  width: 36rpx;
+  background: linear-gradient(180deg, #BAE6FD 0%, #38BDF8 100%);
+  border-radius: 100rpx; 
+  min-height: 8rpx; /* Minimum visible bar */
+  transition: height 0.4s ease-out;
+}
+
+.bar-lbl {
+  font-size: 22rpx;
+  color: #0EA5E9;
+  margin-top: 16rpx;
+  font-weight: 600;
+}
+.bar-sub {
+  font-size: 16rpx;
+  color: #94A3B8;
+  margin-top: 4rpx;
+}
+
+/* Sweet Empty State */
+.empty-state {
+  text-align: center;
+  padding: 80rpx 40rpx;
+  border: 4rpx dashed #E0F2FE;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Improved Swipe Action Styles (Flexible Height) */
+.log-item-container {
+  position: relative;
+  margin-bottom: 24rpx;
+  border-radius: 64rpx;
+  overflow: hidden;
+  width: 100%;
+}
+.swipe-actions-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 240rpx;
+  display: flex;
+  background: #FEE2E2; /* Delete color background */
+  z-index: 1;
+}
+.log-card {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 0 !important; /* Managed by container */
+  width: 100%;
+  box-sizing: border-box;
+  transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.swipe-btn {
+  width: 120rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+}
+.swipe-btn.edit { background: #E0F2FE; }
+.swipe-btn.delete { background: #FEE2E2; }
+
+/* Fun Analysis Overlay */
+.analysis-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(224, 242, 254, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s;
+}
+.analysis-box {
+  width: 500rpx;
+  text-align: center;
+  padding: 80rpx 40rpx;
+  overflow: hidden;
+}
+.analysis-icon {
+  font-size: 120rpx;
+  animation: float 2s infinite ease-in-out;
+}
+.analysis-scanner {
+  height: 4rpx;
+  background: linear-gradient(90deg, transparent, #38BDF8, transparent);
+  margin: 40rpx 0;
+  animation: scan 1.5s infinite linear;
+}
+.analysis-text {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #0369A1;
+  display: block;
+}
+.analysis-sub {
+  font-size: 24rpx;
+  color: #94A3B8;
+  margin-top: 12rpx;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30rpx); }
+}
+@keyframes scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Date Slider Styles */
+.date-slider {
+  white-space: nowrap;
+  margin: 32rpx 0;
+  padding: 10rpx 0;
+  height: 100rpx;
+}
+.date-item {
+  display: inline-block;
+  padding: 16rpx 32rpx;
+  margin-right: 16rpx;
+  background: #FFFFFF;
+  border-radius: 40rpx;
+  border: 2rpx solid #F0F9FF;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.02);
+  transition: all 0.2s;
+}
+.date-item.active {
+  background: #7DD3FC;
+  border-color: #38BDF8;
+}
+.date-item.active .date-lbl {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+.date-lbl {
+  font-size: 24rpx;
+  color: #0EA5E9;
+}

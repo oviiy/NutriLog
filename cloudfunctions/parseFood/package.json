@@ -1,0 +1,9 @@
+{
+  "name": "parseFood",
+  "version": "1.0.0",
+  "description": "Parse text or photo of a meal into structured nutrition JSON via DeepSeek.",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~3.0.0"
+  }
+}
