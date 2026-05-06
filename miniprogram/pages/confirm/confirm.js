@@ -5,6 +5,7 @@ const i18n = require('../../utils/i18n.js')
 Page({
   data: {
     items: [],
+    baseItems: [], // Reference AI estimates
     notes: '',
     rawText: '',
     inputType: 'text',
@@ -43,6 +44,9 @@ Page({
       carbs_g: Number(it.carbs_g) || 0,
       fat_g: Number(it.fat_g) || 0
     }))
+
+    // Keep a deep copy of AI's original data as a base for scaling
+    const baseItems = JSON.parse(JSON.stringify(items))
     
     // Default time logic: If not today, fallback to 18:00
     const isToday = pending.defaultDate === storage.todayKey()
@@ -50,6 +54,7 @@ Page({
 
     this.setData({
       items,
+      baseItems,
       notes: pending.parsed.notes || '',
       rawText: pending.transcript || '',
       inputType: pending.inputType || 'text',
@@ -94,10 +99,34 @@ Page({
     })
   },
 
+  // Helper to extract first number from a string (e.g. "200g" -> 200)
+  _parseNum(str) {
+    const m = String(str).match(/(\d+(\.\d+)?)/)
+    return m ? parseFloat(m[1]) : null
+  },
+
   onEdit(e) {
     const { i, k } = e.currentTarget.dataset
     const items = this.data.items
-    items[i][k] = e.detail.value
+    const val = e.detail.value
+    items[i][k] = val
+    
+    // SMART FEATURE: If user overwrites the portion (e.g. "100g" -> "200g"), 
+    // auto-adjust calories/macros based on the ratio.
+    if (k === 'portion') {
+      const baseVal = this._parseNum(this.data.baseItems[i].portion)
+      const newVal = this._parseNum(val)
+      
+      if (baseVal && newVal && baseVal > 0) {
+        const ratio = newVal / baseVal
+        const base = this.data.baseItems[i]
+        items[i].calories = Math.round(base.calories * ratio)
+        items[i].protein_g = Number((base.protein_g * ratio).toFixed(1))
+        items[i].carbs_g = Number((base.carbs_g * ratio).toFixed(1))
+        items[i].fat_g = Number((base.fat_g * ratio).toFixed(1))
+      }
+    }
+    
     this.setData({ items })
     this.recalc()
   },
