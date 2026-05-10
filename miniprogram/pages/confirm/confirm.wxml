@@ -1,8 +1,10 @@
 <view class="container">
 
-  <view wx:if="{{rawText}}" class="card raw">
-    <text class="muted small">{{t.describe}}</text>
-    <text class="raw-text">{{rawText}}</text>
+  <!-- Raw input section - supports both text and photo (Bug 6) -->
+  <view wx:if="{{rawText || inputType === 'photo'}}" class="card raw">
+    <text class="muted small">{{inputType === 'photo' ? '📸 Photo input' : t.describe}}</text>
+    <image wx:if="{{inputType === 'photo' && tempImagePath}}" src="{{tempImagePath}}" mode="widthFix" class="photo-thumb" style="width: 100%; border-radius: 24rpx; margin: 16rpx 0;" />
+    <text wx:else class="raw-text">{{rawText}}</text>
   </view>
 
   <view class="card">
@@ -19,6 +21,7 @@
     </view>
   </view>
 
+  <!-- Portion scale card -->
   <view class="card">
     <view class="card-header">
       <text>{{t.portionIate}} {{portionScale}}%</text>
@@ -33,6 +36,7 @@
     </view>
   </view>
 
+  <!-- Detected items -->
   <view class="card">
     <view class="card-header">
       <text>{{t.detected}}</text>
@@ -76,6 +80,14 @@
     </view>
 
     <view class="add-row" bindtap="onAddItem">+ {{t.edit}}</view>
+  </view>
+
+  <!-- Editable Notes (Bug 7) -->
+  <view class="card">
+    <view class="card-header">
+      <text>Notes</text>
+    </view>
+    <textarea value="{{notes}}" bindinput="onNotesInput" placeholder="Any extra notes or corrections..." style="width: 100%; height: 180rpx; padding: 24rpx; font-size: 28rpx; line-height: 1.5;" />
   </view>
 
   <view class="footer">
